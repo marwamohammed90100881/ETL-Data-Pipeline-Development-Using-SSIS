@@ -1,0 +1,1640 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/2/2025 9:51:13 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-QI5KD3C"
+  DTS:CreatorName="AzureAD\MarwahAlHatmi"
+  DTS:DTSID="{AE734E63-4AAC-4B6D-8199-00B5D2DEB94D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{FAABAF2C-89C9-4A73-B628-B582E29903B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QI5KD3C.sampleDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BC5C40CF-C991-4B07-8444-E4C9B5528499}"
+      DTS:ObjectName="DESKTOP-QI5KD3C.sampleDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-QI5KD3C;Initial Catalog=sampleDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{978CE312-CE99-4E57-96CB-F830537C7247}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MarwahAlHatmi\Desktop\2025 KPI update\SSIS\ETL Data Pipeline Development Using SSIS\amazon.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{47EBF06E-E261-4B6C-98B0-69FE7AB22800}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MarwahAlHatmi\Desktop\2025 KPI update\SSIS\ETL Data Pipeline Development Using SSIS\ISNULL.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E9AAB71C-5BE7-4EB3-87F1-68B95465DA74}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Excel Destination"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="Excel Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Excel_Destination$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Excel Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[asin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="asin"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[asin]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[asin]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_title"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_title]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_price]"
+                      cachedDataType="cy"
+                      cachedName="product_price"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_price]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_minimum_offer_price]"
+                      cachedDataType="cy"
+                      cachedName="product_minimum_offer_price"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_minimum_offer_price]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_minimum_offer_price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_star_rating]"
+                      cachedDataType="r8"
+                      cachedName="product_star_rating"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_star_rating]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_star_rating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_num_ratings]"
+                      cachedDataType="r8"
+                      cachedName="product_num_ratings"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_num_ratings]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_num_ratings]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[is_best_seller]"
+                      cachedDataType="bool"
+                      cachedName="is_best_seller"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_best_seller]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_best_seller]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[is_prime]"
+                      cachedDataType="bool"
+                      cachedName="is_prime"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_prime]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_prime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[product_url]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_url"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_url]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_url]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[is_amazon_choice]"
+                      cachedDataType="bool"
+                      cachedName="is_amazon_choice"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_amazon_choice]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_amazon_choice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[sales_volume]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sales_volume"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[sales_volume]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[sales_volume]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="255"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_price]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_minimum_offer_price]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_minimum_offer_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_star_rating]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_star_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_num_ratings]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_num_ratings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_best_seller]"
+                      dataType="wstr"
+                      length="255"
+                      name="is_best_seller" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_prime]"
+                      dataType="wstr"
+                      length="255"
+                      name="is_prime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[product_url]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_url" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[is_amazon_choice]"
+                      dataType="wstr"
+                      length="255"
+                      name="is_amazon_choice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[sales_volume]"
+                      dataType="wstr"
+                      length="255"
+                      name="sales_volume" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Import Data From Excel"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Import Data From Excel"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">amazon$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Import Data From Excel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[asin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[asin]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[asin]"
+                      name="asin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_title]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_title]"
+                      name="product_title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_price]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_price]"
+                      name="product_price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_minimum_offer_price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_minimum_offer_price]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_minimum_offer_price]"
+                      name="product_minimum_offer_price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_star_rating]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_star_rating]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_star_rating]"
+                      name="product_star_rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_num_ratings]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_num_ratings]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_num_ratings]"
+                      name="product_num_ratings"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_best_seller]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_best_seller]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_best_seller]"
+                      name="is_best_seller"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_prime]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_prime]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_prime]"
+                      name="is_prime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_url]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_url]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_url]"
+                      name="product_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_amazon_choice]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_amazon_choice]"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_amazon_choice]"
+                      name="is_amazon_choice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[sales_volume]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[sales_volume]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[sales_volume]"
+                      name="sales_volume"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="255"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_price]"
+                      dataType="cy"
+                      name="product_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_minimum_offer_price]"
+                      dataType="cy"
+                      name="product_minimum_offer_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_star_rating]"
+                      dataType="r8"
+                      name="product_star_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_num_ratings]"
+                      dataType="r8"
+                      name="product_num_ratings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_best_seller]"
+                      dataType="bool"
+                      name="is_best_seller" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_prime]"
+                      dataType="bool"
+                      name="is_prime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[product_url]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_url" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[is_amazon_choice]"
+                      dataType="bool"
+                      name="is_amazon_choice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].ExternalColumns[sales_volume]"
+                      dataType="wstr"
+                      length="255"
+                      name="sales_volume" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[asin]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[asin]"
+                      name="asin" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_title]"
+                      name="product_title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_price]"
+                      name="product_price" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_minimum_offer_price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_minimum_offer_price]"
+                      name="product_minimum_offer_price" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_star_rating]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_star_rating]"
+                      name="product_star_rating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_num_ratings]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_num_ratings]"
+                      name="product_num_ratings" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_best_seller]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_best_seller]"
+                      name="is_best_seller" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_prime]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_prime]"
+                      name="is_prime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_url]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[product_url]"
+                      name="product_url" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_amazon_choice]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[is_amazon_choice]"
+                      name="is_amazon_choice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[sales_volume]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[sales_volume]"
+                      name="sales_volume" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OLE DB Destination]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QI5KD3C.sampleDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QI5KD3C.sampleDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[asin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="asin"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[asin]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_title"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_title]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_price]"
+                      cachedDataType="cy"
+                      cachedName="product_price"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_price]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_minimum_offer_price]"
+                      cachedDataType="cy"
+                      cachedName="product_minimum_offer_price"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_minimum_offer_price]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_minimum_offer_price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_star_rating]"
+                      cachedDataType="r8"
+                      cachedName="product_star_rating"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_star_rating]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_star_rating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_num_ratings]"
+                      cachedDataType="r8"
+                      cachedName="product_num_ratings"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_num_ratings]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_num_ratings]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_best_seller]"
+                      cachedDataType="bool"
+                      cachedName="is_best_seller"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_best_seller]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_best_seller]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_prime]"
+                      cachedDataType="bool"
+                      cachedName="is_prime"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_prime]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_prime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_url]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_url"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_url]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_url]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_amazon_choice]"
+                      cachedDataType="bool"
+                      cachedName="is_amazon_choice"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_amazon_choice]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_amazon_choice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sales_volume]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sales_volume"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sales_volume]"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[sales_volume]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="255"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_price]"
+                      dataType="cy"
+                      name="product_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_minimum_offer_price]"
+                      dataType="cy"
+                      name="product_minimum_offer_price" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_star_rating]"
+                      dataType="r8"
+                      name="product_star_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_num_ratings]"
+                      dataType="r8"
+                      name="product_num_ratings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_best_seller]"
+                      dataType="bool"
+                      name="is_best_seller" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_prime]"
+                      dataType="bool"
+                      name="is_prime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_url]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_url" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_amazon_choice]"
+                      dataType="bool"
+                      name="is_amazon_choice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sales_volume]"
+                      dataType="wstr"
+                      length="255"
+                      name="sales_volume" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Replace Null Values"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace Null Values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Replace Null Values.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Replace Null Values.Inputs[Derived Column Input].Columns[product_price]"
+                      cachedDataType="cy"
+                      cachedName="product_price"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]}) ? 0 : #{Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(product_price) ? 0 : product_price</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Replace Null Values.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Replace Null Values.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Data by ASIN and Remove Duplicates"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[asin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="asin"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[asin]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_title"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_price]"
+                      cachedDataType="cy"
+                      cachedName="product_price"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_minimum_offer_price]"
+                      cachedDataType="cy"
+                      cachedName="product_minimum_offer_price"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_minimum_offer_price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_star_rating]"
+                      cachedDataType="r8"
+                      cachedName="product_star_rating"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_star_rating]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_num_ratings]"
+                      cachedDataType="r8"
+                      cachedName="product_num_ratings"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_num_ratings]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[is_best_seller]"
+                      cachedDataType="bool"
+                      cachedName="is_best_seller"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_best_seller]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[is_prime]"
+                      cachedDataType="bool"
+                      cachedName="is_prime"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_prime]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[product_url]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_url"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_url]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[is_amazon_choice]"
+                      cachedDataType="bool"
+                      cachedName="is_amazon_choice"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_amazon_choice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input].Columns[sales_volume]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sales_volume"
+                      lineageId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[sales_volume]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[asin]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[asin]"
+                      name="asin"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[asin]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_title]"
+                      name="product_title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]"
+                      name="product_price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_minimum_offer_price]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_minimum_offer_price]"
+                      name="product_minimum_offer_price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_minimum_offer_price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_star_rating]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_star_rating]"
+                      name="product_star_rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_star_rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_num_ratings]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_num_ratings]"
+                      name="product_num_ratings">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_num_ratings]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_best_seller]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_best_seller]"
+                      name="is_best_seller">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_best_seller]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_prime]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_prime]"
+                      name="is_prime">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_prime]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_url]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_url]"
+                      name="product_url">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[product_url]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_amazon_choice]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[is_amazon_choice]"
+                      name="is_amazon_choice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[is_amazon_choice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[sales_volume]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[sales_volume]"
+                      name="sales_volume">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output].Columns[sales_volume]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Split Rows Based on Null or Non-Null Price Values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input].Columns[product_price]"
+                      cachedDataType="cy"
+                      cachedName="product_price"
+                      lineageId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[RowsWithNullPrice]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="RowsWithNullPrice"
+                  synchronousInputId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL]((#{Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]}))</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL((product_price))</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[RowsWithNotNullPrice]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="RowsWithNotNullPrice"
+                  synchronousInputId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL]((#{Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output].Columns[product_price]}))</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL((product_price))</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Replace Null Values.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Inputs[Sort Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Import Data From Excel.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[RowsWithNotNullPrice]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="RowsWithNotNullPrice"
+              startId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[RowsWithNotNullPrice]" />
+            <path
+              refId="Package\Data Flow Task.Paths[RowsWithNullPrice]"
+              endId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]"
+              name="RowsWithNullPrice"
+              startId="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values.Outputs[RowsWithNullPrice]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Replace Null Values.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151.333333333334,42"
+          Id="Package\Data Flow Task"
+          TopLeft="122.08333151415,33.7999993956089" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="191.333333333334,42"
+          Id="Package\Data Flow Task\Import Data From Excel"
+          TopLeft="212.666666666667,43.3333333333333" />
+        <NodeLayout
+          Size="278,42"
+          Id="Package\Data Flow Task\Sort Data by ASIN and Remove Duplicates"
+          TopLeft="162.666666666667,158" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="305,85.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.6666666666667"
+              Start="0,0"
+              End="0,65.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.333333333334,42"
+          Id="Package\Data Flow Task\Replace Null Values"
+          TopLeft="227.333333333333,228.666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="301.666666666667,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.3333333333333,28.6666666666666"
+              Start="0,0"
+              End="11.3333333333333,21.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.3333333333333"
+                    Point2="0,14.3333333333333"
+                    Point3="4,14.3333333333333" />
+                  <mssgle:LineSegment
+                    End="7.33333333333326,14.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.33333333333326,14.3333333333333"
+                    Point2="11.3333333333333,14.3333333333333"
+                    Point3="11.3333333333333,18.3333333333333" />
+                  <mssgle:LineSegment
+                    End="11.3333333333333,21.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="312.666666666667,42"
+          Id="Package\Data Flow Task\Split Rows Based on Null or Non-Null Price Values"
+          TopLeft="237.333333333333,308.666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="313,270.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.6666666666667,38.0000000000001"
+              Start="0,0"
+              End="80.6666666666667,30.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0000000000001"
+                    Point2="0,19.0000000000001"
+                    Point3="4,19.0000000000001" />
+                  <mssgle:LineSegment
+                    End="76.6666666666667,19.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.6666666666667,19.0000000000001"
+                    Point2="80.6666666666667,19.0000000000001"
+                    Point3="80.6666666666667,23.0000000000001" />
+                  <mssgle:LineSegment
+                    End="80.6666666666667,30.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159.333333333334,42"
+          Id="Package\Data Flow Task\Excel Destination"
+          TopLeft="196.666666666667,397.333333333333" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[RowsWithNullPrice]"
+          TopLeft="393.666666666667,350.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.333333333333,46.6666666666666"
+              Start="0,0"
+              End="-117.333333333333,39.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3333333333333"
+                    Point2="0,23.3333333333333"
+                    Point3="-4,23.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-113.333333333333,23.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.333333333333,23.3333333333333"
+                    Point2="-117.333333333333,23.3333333333333"
+                    Point3="-117.333333333333,27.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-117.333333333333,39.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.093014322917,28.3333333333333,82.8526953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.333333333334,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="526.666666666667,402" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[RowsWithNotNullPrice]"
+          TopLeft="444.444444444444,350.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="167.888888888889,51.3333333333333"
+              Start="0,0"
+              End="167.888888888889,43.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6901428369396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6901428369396"
+                    Point2="0,20.6901428369396"
+                    Point3="4,20.6901428369396" />
+                  <mssgle:LineSegment
+                    End="163.888888888889,20.6901428369396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="163.888888888889,20.6901428369396"
+                    Point2="167.888888888889,20.6901428369396"
+                    Point3="167.888888888889,24.6901428369396" />
+                  <mssgle:LineSegment
+                    End="167.888888888889,43.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="34.7980967881944,25.6901428369396,98.2926953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Import Data From Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
